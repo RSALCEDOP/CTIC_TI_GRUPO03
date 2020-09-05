@@ -1,0 +1,44 @@
+SET ECHO ON
+SET TIMING ON
+SET FEEDBACK ON
+
+SPOOL &1;
+
+--============================================
+-- 		ESPECIALIZACION BI & BIG DATA
+--============================================
+
+-- CARGA DE TABLA MA_PERSONA
+
+TRUNCATE TABLE MA_PERSONA;
+
+INSERT INTO MA_PERSONA
+(
+	DOCIDENTIDAD		,
+	DIGVERIFICACION		,
+	GRUPOVOTACION		,
+	UBIGEO				,
+	APPATERNO			,
+	APMATERNO			,
+	NOMBRES				,
+	FECNACIMIENTO		,
+	SEXO				,
+	EDAD					
+)
+SELECT 
+	DOCIDENTIDAD						,
+	TO_NUMBER(DIGVERIFICACION)		    ,
+	GRUPOVOTACION		                ,
+	UBIGEO				                ,
+	APPATERNO			                ,
+	APMATERNO			                ,
+	NOMBRES				                ,
+	TO_DATE(FECNACIMIENTO,'YYYYMMDD')	,	
+	TO_NUMBER(SEXO)                     ,
+	TRUNC((TO_NUMBER(TO_CHAR(SYSDATE,'YYYYMMDD'))-TO_NUMBER(FECNACIMIENTO))/10000,0) EDAD
+FROM TMP_PERSONA;
+
+COMMIT;
+
+DISCONNECT;
+EXIT;

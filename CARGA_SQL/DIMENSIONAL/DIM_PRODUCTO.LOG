@@ -1,0 +1,59 @@
+SQL> 
+SQL> --============================================
+SQL> -- 	     ESPECIALIZACION BI & BIG DATA
+SQL> --============================================
+SQL> 
+SQL> -- CARGA DE TABLA DIM_PRODUCTO
+SQL> 
+SQL> TRUNCATE TABLE DIM_PRODUCTO;
+
+Table truncated.
+
+Elapsed: 00:00:00.00
+SQL> 
+SQL> INSERT INTO DIM_PRODUCTO
+  2  (
+  3  CODPRODUCTO	     ,
+  4  PRODUCTO		     ,
+  5  CODSUBPRODUCTO  ,
+  6  SUBPRODUCTO
+  7  )
+  8  SELECT
+  9  DISTINCT
+ 10  	     CODPRODUCTO,
+ 11  	 CASE
+ 12  		     WHEN CODPRODUCTO = 1 THEN 'Prestamo Pequeña Empresa'
+ 13  		     WHEN CODPRODUCTO = 2 THEN 'Prestamo MicroEmpresa'
+ 14  		     WHEN CODPRODUCTO = 3 THEN 'Prestamo Hipotecario'
+ 15  		     WHEN CODPRODUCTO = 4 THEN 'Prestamo de Consumo'
+ 16  		     WHEN CODPRODUCTO = 5 THEN 'Tarjeta de Credito'
+ 17  		     WHEN CODPRODUCTO = 6 THEN 'Otros'
+ 18  	 END PRODUCTO,
+ 19  	 CODSUBPRODUCTO,
+ 20  	 CASE
+ 21  		     WHEN CODSUBPRODUCTO = 1 THEN 'Prestamo Pequeña Empresa'
+ 22  		     WHEN CODSUBPRODUCTO = 2 THEN 'Prestamo MicroEmpresa'
+ 23  		     WHEN CODSUBPRODUCTO = 3 THEN 'Hipotecario Normal'
+ 24  		     WHEN CODSUBPRODUCTO = 4 THEN 'Hipotecario Mivivienda'
+ 25  		     WHEN CODSUBPRODUCTO = 5 THEN 'Prestamo Efectivo'
+ 26  		     WHEN CODSUBPRODUCTO = 6 THEN 'Prestamo Vehicular'
+ 27  		     WHEN CODSUBPRODUCTO = 7 THEN 'Saldo de Tarjeta de Credito'
+ 28  		     WHEN CODSUBPRODUCTO = 8 THEN 'Linea de Tarjeta de Credito'
+ 29  		     WHEN CODSUBPRODUCTO = 9 THEN 'Otros'
+ 30  	 END SUBPRODUCTO
+ 31  FROM HM_DEUDACLIENTE
+ 32  ORDER BY CODPRODUCTO;
+
+9 rows created.
+
+Elapsed: 00:00:00.62
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+SQL> 
+SQL> DISCONNECT;
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+SQL> EXIT;

@@ -1,0 +1,4 @@
+sqlplus system/LIMA2020 @MA_UBIGEO.SQL MA_UBIGEO.LOG
+
+
+EXIT

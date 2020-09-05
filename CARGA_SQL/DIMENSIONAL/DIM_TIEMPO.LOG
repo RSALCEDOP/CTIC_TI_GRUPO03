@@ -1,0 +1,47 @@
+SQL> 
+SQL> --============================================
+SQL> -- 	     ESPECIALIZACION BI & BIG DATA
+SQL> --============================================
+SQL> 
+SQL> -- CARGA DE TABLA DIM_TIEMPO
+SQL> 
+SQL> TRUNCATE TABLE DIM_TIEMPO;
+
+Table truncated.
+
+Elapsed: 00:00:00.00
+SQL> 
+SQL> INSERT INTO DIM_TIEMPO
+  2  (
+  3  CODMES		     ,
+  4  ANIO		     ,
+  5  MES			     ,
+  6  FECCARGATABLA
+  7  )
+  8  SELECT
+  9  	     DISTINCT A.CODMES,
+ 10  	     SUBSTR(A.CODMES,1,4),
+ 11  	     SUBSTR(A.CODMES,5,2),
+ 12  	     SYSDATE
+ 13  FROM HM_CLIENTE A
+ 14  UNION
+ 15  SELECT
+ 16  	     DISTINCT B.CODMES,
+ 17  	     SUBSTR(B.CODMES,1,4),
+ 18  	     SUBSTR(B.CODMES,5,2),
+ 19  	     SYSDATE
+ 20  FROM HM_DEUDACLIENTE B;
+
+12 rows created.
+
+Elapsed: 00:00:00.86
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+SQL> 
+SQL> DISCONNECT;
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+SQL> EXIT;

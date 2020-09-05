@@ -1,0 +1,48 @@
+SQL> 
+SQL> 
+SQL> TRUNCATE TABLE FAC_DEUDAS;
+
+Table truncated.
+
+Elapsed: 00:00:00.05
+SQL> 
+SQL> INSERT INTO FAC_DEUDAS
+  2  (
+  3  	     CODMES		    ,
+  4  	     CODSBSCLIENTE	    ,
+  5  	     CODENTIDAD 	    ,
+  6  	     CODPRODUCTO	    ,
+  7  	     CODSUBPRODUCTO	    ,
+  8  	     DEUDACALIFCLIENTE	    ,
+  9  	     CLASIFDEUDACLIENTE     ,
+ 10  	     SALDO		    ,
+ 11  	     FECCARGATABLA
+ 12  )
+ 13  SELECT
+ 14  	     A.CODMES		   ,
+ 15  	     A.CODSBSCLIENTE	   ,
+ 16  	     A.CODENTIDAD	   ,
+ 17  	     A.CODPRODUCTO	   ,
+ 18  	     A.CODSUBPRODUCTO	   ,
+ 19  	     C.DEUDACALIFCLIENTE   ,
+ 20  	     C.CLASIFDEUDACLIENTE  ,
+ 21  	     A.SALDO		   ,
+ 22  	     SYSDATE
+ 23  FROM HM_DEUDACLIENTE A
+ 24  LEFT JOIN HM_CLIENTE C
+ 25  ON A.CODSBSCLIENTE = C.CODSBSCLIENTE
+ 26  AND A.CODMES = C.CODMES;
+
+2099544 rows created.
+
+Elapsed: 00:00:33.25
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+SQL> 
+SQL> DISCONNECT;
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+SQL> EXIT;

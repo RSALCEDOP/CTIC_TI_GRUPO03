@@ -1,0 +1,46 @@
+SQL> 
+SQL> --============================================
+SQL> -- 	     ESPECIALIZACION BI & BIG DATA
+SQL> --============================================
+SQL> 
+SQL> -- CARGA DE TABLA DIM_ENTIDAD_FINANCIERA
+SQL> 
+SQL> TRUNCATE TABLE DIM_ENTIDAD_FINANCIERA;
+
+Table truncated.
+
+Elapsed: 00:00:00.00
+SQL> 
+SQL> INSERT INTO DIM_ENTIDAD_FINANCIERA
+  2  (
+  3  CODENTIDAD,
+  4  BANCO,
+  5  BANCONOMCORTO,
+  6  TIPENTIDAD,
+  7  TIPCOMPETENCIA1,
+  8  TIPCOMPETENCIA2,
+  9  FECCARGATABLA
+ 10  )
+ 11  SELECT
+ 12  	     CODENTIDAD,
+ 13  	 BANCO,
+ 14  	 BANCONOMCORTO,
+ 15  	 TIPENTIDAD,
+ 16  	 TIPCOMPETENCIA1,
+ 17  	 TIPCOMPETENCIA2,
+ 18  	     SYSDATE
+ 19  FROM MA_ENTIDADFINANCIERA;
+
+115 rows created.
+
+Elapsed: 00:00:00.00
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+SQL> 
+SQL> DISCONNECT;
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+SQL> EXIT;

@@ -1,0 +1,53 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on Dom Ago 30 18:44:05 2020
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   CTL_TMP_ENTIDADFINANCIERA.ctl
+Data File:      DATA/DATA_ENTIDADESFINANCIERAS.txt
+  Bad File:     DATA_ENTIDADESFINANCIERAS.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 1
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table TMP_ENTIDADFINANCIERA, loaded from every logical record.
+Insert option in effect for this table: TRUNCATE
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+CODENTIDAD                          FIRST     *  WHT      CHARACTER            
+BANCO                                NEXT     *  WHT      CHARACTER            
+BANCONOMCORTO                        NEXT     *  WHT      CHARACTER            
+TIPENTIDAD                           NEXT     *  WHT      CHARACTER            
+TIPCOMPETENCIA1                      NEXT     *  WHT      CHARACTER            
+TIPCOMPETENCIA2                      NEXT     *  WHT      CHARACTER            
+
+
+Table TMP_ENTIDADFINANCIERA:
+  115 Rows successfully loaded.
+  0 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                  99072 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          1
+Total logical records read:           115
+Total logical records rejected:         0
+Total logical records discarded:        0
+
+Run began on Dom Ago 30 18:44:05 2020
+Run ended on Dom Ago 30 18:44:05 2020
+
+Elapsed time was:     00:00:00.20
+CPU time was:         00:00:00.11

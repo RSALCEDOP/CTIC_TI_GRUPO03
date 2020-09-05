@@ -1,0 +1,72 @@
+SQL> 
+SQL> --============================================
+SQL> -- 	     ESPECIALIZACION BI & BIG DATA
+SQL> --============================================
+SQL> 
+SQL> -- CARGA DE TABLA DIM_CLIENTE
+SQL> 
+SQL> TRUNCATE TABLE DIM_CLIENTE;
+
+Table truncated.
+
+Elapsed: 00:00:00.13
+SQL> 
+SQL> INSERT INTO DIM_CLIENTE
+  2  (
+  3  	     CODMES					     ,
+  4  	     CODSBSCLIENTE			     ,
+  5  	     FECREPORTE 				     ,
+  6  	     TIPDOCEMPRESA			     ,
+  7  	     RUC						     ,
+  8  	     TIPDOCIDENTIDAD			     ,
+  9  	     DOCIDENTIDAD			     ,
+ 10  	     TIPPERSONA 				     ,
+ 11  	     TIPEMPRESA 				     ,
+ 12  	     CANTEMPRESA				     ,
+ 13  	     DEUDACALIFCLIENTE			     ,
+ 14  	     CLASIFDEUDACLIENTE 		     ,
+ 15  	     UBIGEO					     ,
+ 16  	     SEXO					     ,
+ 17  	     APPATERNO					     ,
+ 18  	     APMATERNO					     ,
+ 19  	     NOMBRES					     ,
+ 20  	     EDAD					     ,
+ 21  	     FECCARGATABLA
+ 22  )
+ 23  SELECT
+ 24  	     A.CODMES						     ,
+ 25  	     A.CODSBSCLIENTE				     ,
+ 26  	     A.FECREPORTE				     ,
+ 27  	     A.TIPDOCEMPRESA				     ,
+ 28  	     A.RUC						     ,
+ 29  	     A.TIPDOCIDENTIDAD				     ,
+ 30  	     A.DOCIDENTIDAD				     ,
+ 31  	     A.TIPPERSONA				     ,
+ 32  	     A.TIPEMPRESA				     ,
+ 33  	     A.CANTEMPRESA				     ,
+ 34  	     A.DEUDACALIFCLIENTE			     ,
+ 35  	     A.CLASIFDEUDACLIENTE		     ,
+ 36  	     B.UBIGEO						     ,
+ 37  	     B.SEXO						     ,
+ 38  	     A.RAZSOCOAP					     ,
+ 39  	     A.APMATERNO					     ,
+ 40  	     TRIM(A.NOMBRE1)||' '||TRIM(A.NOMBRE2),
+ 41  	     B.EDAD						     ,
+ 42  	     SYSDATE
+ 43  FROM HM_CLIENTE A
+ 44  LEFT JOIN MA_PERSONA B
+ 45  ON A.DOCIDENTIDAD = B.DOCIDENTIDAD;
+
+334776 rows created.
+
+Elapsed: 00:00:03.63
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+SQL> 
+SQL> DISCONNECT;
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+SQL> EXIT;

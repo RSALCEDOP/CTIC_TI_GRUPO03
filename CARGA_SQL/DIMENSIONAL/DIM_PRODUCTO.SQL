@@ -1,0 +1,51 @@
+SET ECHO ON
+SET TIMING ON
+SET FEEDBACK ON
+
+SPOOL &1;
+
+--============================================
+-- 		ESPECIALIZACION BI & BIG DATA
+--============================================
+
+-- CARGA DE TABLA DIM_PRODUCTO
+
+TRUNCATE TABLE DIM_PRODUCTO;
+
+INSERT INTO DIM_PRODUCTO
+(
+CODPRODUCTO		,
+PRODUCTO		,
+CODSUBPRODUCTO	,
+SUBPRODUCTO			
+)
+SELECT
+DISTINCT
+	CODPRODUCTO,
+    CASE 
+		WHEN CODPRODUCTO = 1 THEN 'Prestamo Pequeña Empresa'
+		WHEN CODPRODUCTO = 2 THEN 'Prestamo MicroEmpresa'
+		WHEN CODPRODUCTO = 3 THEN 'Prestamo Hipotecario'
+		WHEN CODPRODUCTO = 4 THEN 'Prestamo de Consumo'
+		WHEN CODPRODUCTO = 5 THEN 'Tarjeta de Credito'
+		WHEN CODPRODUCTO = 6 THEN 'Otros'
+    END PRODUCTO,
+    CODSUBPRODUCTO,
+    CASE 
+		WHEN CODSUBPRODUCTO = 1 THEN 'Prestamo Pequeña Empresa'
+		WHEN CODSUBPRODUCTO = 2 THEN 'Prestamo MicroEmpresa'
+		WHEN CODSUBPRODUCTO = 3 THEN 'Hipotecario Normal'
+		WHEN CODSUBPRODUCTO = 4 THEN 'Hipotecario Mivivienda'
+		WHEN CODSUBPRODUCTO = 5 THEN 'Prestamo Efectivo'
+		WHEN CODSUBPRODUCTO = 6 THEN 'Prestamo Vehicular'
+		WHEN CODSUBPRODUCTO = 7 THEN 'Saldo de Tarjeta de Credito'
+		WHEN CODSUBPRODUCTO = 8 THEN 'Linea de Tarjeta de Credito'
+		WHEN CODSUBPRODUCTO = 9 THEN 'Otros'
+    END SUBPRODUCTO
+FROM HM_DEUDACLIENTE
+ORDER BY CODPRODUCTO;
+
+COMMIT;
+
+DISCONNECT;
+EXIT;

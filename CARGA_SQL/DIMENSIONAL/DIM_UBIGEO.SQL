@@ -1,0 +1,38 @@
+SET ECHO ON
+SET TIMING ON
+SET FEEDBACK ON
+
+SPOOL &1;
+
+--============================================
+-- 		ESPECIALIZACION BI & BIG DATA
+--============================================
+
+-- CARGA DE TABLA DIM_UBIGEO
+
+TRUNCATE TABLE DIM_UBIGEO;
+
+INSERT INTO DIM_UBIGEO
+(
+	UBIGEO					,
+	DEPARTAMENTO 			,
+	PROVINCIA				,
+	DISTRITO				,
+	FLGZONA					,
+	FLGCIUDAD				,
+	FECCARGATABLA			
+)
+SELECT 
+	UBIGEO					,
+	DEPARTAMENTO 			,
+	PROVINCIA				,
+	DISTRITO				,
+	FLGZONA					,
+	FLGCIUDAD				,
+	SYSDATE					
+FROM MA_UBIGEO;
+
+COMMIT;
+
+DISCONNECT;
+EXIT;

@@ -1,0 +1,3 @@
+sqlplus system/LIMA2020 @FACT_DEUDA.SQL FACT_DEUDA.LOG
+
+EXIT

@@ -1,0 +1,54 @@
+SQL> 
+SQL> --============================================
+SQL> -- 	     ESPECIALIZACION BI & BIG DATA
+SQL> --============================================
+SQL> 
+SQL> -- CARGA DE TABLA MA_UBIGEO
+SQL> 
+SQL> TRUNCATE TABLE MA_UBIGEO;
+
+Table truncated.
+
+Elapsed: 00:00:00.20
+SQL> 
+SQL> INSERT INTO MA_UBIGEO
+  2  (
+  3  	     UBIGEO				     ,
+  4  	     DEPARTAMENTO		     ,
+  5  	     PROVINCIA				     ,
+  6  	     DISTRITO				     ,
+  7  	     CODIGO			     ,
+  8  	     DISTRITODET			     ,
+  9  	     FLGZONA				     ,
+ 10  	     CENTROSNEGOCIO		     ,
+ 11  	     FLGPROVCENTROSNEGOCIO   ,
+ 12  	     DISTRITOAGG		     ,
+ 13  	     FLGCIUDAD
+ 14  )
+ 15  SELECT
+ 16  	     TRIM(UBIGEO)			     ,
+ 17  	     TRIM(DEPARTAMENTO) 		     ,
+ 18  	     TRIM(PROVINCIA)			     ,
+ 19  	     TRIM(DISTRITO)			     ,
+ 20  	     TRIM(CODIGO)		     ,
+ 21  	     TRIM(DISTRITODET)			     ,
+ 22  	     TRIM(FLGZONA)			     ,
+ 23  	     TRIM(CENTROSNEGOCIO)	     ,
+ 24  	     TRIM(FLGPROVCENTROSNEGOCIO) ,
+ 25  	     TRIM(DISTRITOAGG)		     ,
+ 26  	     TRIM(FLGCIUDAD)
+ 27  FROM TMP_UBIGEO;
+
+1834 rows created.
+
+Elapsed: 00:00:00.08
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+SQL> 
+SQL> DISCONNECT;
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+SQL> EXIT;

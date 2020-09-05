@@ -1,0 +1,72 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on Dom Ago 30 18:43:34 2020
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   CTL_TMP_CLIENTE.ctl
+Data File:      DATA/DATA_CLIENTE.txt
+  Bad File:     DATA_CLIENTE.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 1
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table TMP_CLIENTE, loaded from every logical record.
+Insert option in effect for this table: TRUNCATE
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+CODMES                              FIRST     *   |       CHARACTER            
+TIPREGISTRO                          NEXT     *   |       CHARACTER            
+CODSBSCLIENTE                        NEXT     *   |       CHARACTER            
+FECREPORTE                           NEXT     *   |       CHARACTER            
+TIPDOCEMPRESA                        NEXT     *   |       CHARACTER            
+RUC                                  NEXT     *   |       CHARACTER            
+TIPDOCIDENTIDAD                      NEXT     *   |       CHARACTER            
+DOCIDENTIDAD                         NEXT     *   |       CHARACTER            
+TIPPERSONA                           NEXT     *   |       CHARACTER            
+TIPEMPRESA                           NEXT     *   |       CHARACTER            
+CANTEMPRESA                          NEXT     *   |       CHARACTER            
+DEUDACALIFNORMAL                     NEXT     *   |       CHARACTER            
+DEUDACALIFCPP                        NEXT     *   |       CHARACTER            
+DEUDACALIFDEFICIENTE                 NEXT     *   |       CHARACTER            
+DEUDACALIFDUDOSO                     NEXT     *   |       CHARACTER            
+DEUDACALIFPERDIDA                    NEXT     *   |       CHARACTER            
+RAZSOCOAP                            NEXT     *   |       CHARACTER            
+APMATERNO                            NEXT     *   |       CHARACTER            
+APCASADO                             NEXT     *   |       CHARACTER            
+NOMBRE1                              NEXT     *   |       CHARACTER            
+NOMBRE2                              NEXT     *   |       CHARACTER            
+
+value used for ROWS parameter changed from 64 to 47
+Record 138: Rejected - Error on table TMP_CLIENTE, column TIPEMPRESA.
+ORA-12899: value too large for column "SYSTEM"."TMP_CLIENTE"."TIPEMPRESA" (actual: 11, maximum: 1)
+
+
+Table TMP_CLIENTE:
+  334776 Rows successfully loaded.
+  1 Row not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                 254646 bytes(47 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          1
+Total logical records read:        334777
+Total logical records rejected:         1
+Total logical records discarded:        0
+
+Run began on Dom Ago 30 18:43:34 2020
+Run ended on Dom Ago 30 18:44:04 2020
+
+Elapsed time was:     00:00:30.76
+CPU time was:         00:00:08.13

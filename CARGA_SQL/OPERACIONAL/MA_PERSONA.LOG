@@ -1,0 +1,52 @@
+SQL> 
+SQL> --============================================
+SQL> -- 	     ESPECIALIZACION BI & BIG DATA
+SQL> --============================================
+SQL> 
+SQL> -- CARGA DE TABLA MA_PERSONA
+SQL> 
+SQL> TRUNCATE TABLE MA_PERSONA;
+
+Table truncated.
+
+Elapsed: 00:00:00.06
+SQL> 
+SQL> INSERT INTO MA_PERSONA
+  2  (
+  3  	     DOCIDENTIDAD	     ,
+  4  	     DIGVERIFICACION	     ,
+  5  	     GRUPOVOTACION	     ,
+  6  	     UBIGEO			     ,
+  7  	     APPATERNO			     ,
+  8  	     APMATERNO			     ,
+  9  	     NOMBRES			     ,
+ 10  	     FECNACIMIENTO	     ,
+ 11  	     SEXO			     ,
+ 12  	     EDAD
+ 13  )
+ 14  SELECT
+ 15  	     DOCIDENTIDAD					     ,
+ 16  	     TO_NUMBER(DIGVERIFICACION) 		 ,
+ 17  	     GRUPOVOTACION			     ,
+ 18  	     UBIGEO					     ,
+ 19  	     APPATERNO					     ,
+ 20  	     APMATERNO					     ,
+ 21  	     NOMBRES					     ,
+ 22  	     TO_DATE(FECNACIMIENTO,'YYYYMMDD')	     ,
+ 23  	     TO_NUMBER(SEXO)			 ,
+ 24  	     TRUNC((TO_NUMBER(TO_CHAR(SYSDATE,'YYYYMMDD'))-TO_NUMBER(FECNACIMIENTO))/10000,0) EDAD
+ 25  FROM TMP_PERSONA;
+
+28525 rows created.
+
+Elapsed: 00:00:00.54
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+SQL> 
+SQL> DISCONNECT;
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+SQL> EXIT;
